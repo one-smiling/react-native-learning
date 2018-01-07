@@ -10,7 +10,8 @@ import NewsList from 'app/NewsList'
 //底部的tabBar导航
 const TabbarNavigator = TabNavigator({
         Home:{screen:HomeScreen},
-        Details:{screen:DetailScreen}
+        Details:{screen:DetailScreen},
+        TabBarNewsList:{screen:NewsList}
     },
     {
     initialRouteName: 'Home'
@@ -19,6 +20,7 @@ const TabbarNavigator = TabNavigator({
 
 //整个应用的路由栈
 const AppNavigator = StackNavigator({
+    TabBar:{screen:TabbarNavigator},
     Home:{screen:HomeScreen},
     NewsList:{screen:NewsList},
     NewsDetail: {screen: DetailScreen}

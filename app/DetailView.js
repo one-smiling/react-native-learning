@@ -13,7 +13,11 @@ class DetailScreen extends React.Component {
     };
 
     render () {
-        const {text} = this.props.navigation.state.params;
+        const params = this.props.navigation.state.params;
+        var text
+        if (params) {
+            text = params['text']
+        }
         return (
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
                 <Text>Details Screen {'\n'} {text}</Text>

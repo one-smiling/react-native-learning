@@ -1,6 +1,7 @@
 import {StackNavigator} from 'react-navigation'
 import React from 'react';
 import { View, Text , Button} from 'react-native';
+import PropTypes from 'prop-types';
 
 
 
@@ -8,7 +9,11 @@ class HomeScreen extends React.Component {
 
     static navigationOptions = {
         title:'这是首页'
-    }
+    };
+
+    static propType = {
+        buttonAction:PropTypes.func.isRequired
+    };
 
     render () {
         const {navigate} = this.props.navigation;

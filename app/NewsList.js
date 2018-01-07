@@ -32,10 +32,9 @@ export function genItemData(count: number, start: number = 0): Array<Item> {
 class MyListItem extends React.PureComponent {
 
     _onPress = ()=> {
-        this.props.onPressItem(this.props.id)
+        this.props.onPressItem(this.props.item,this.props.id)
     };
     render() {
-
         const {item,id} = this.props
         return (
             <View>
@@ -65,7 +64,8 @@ class MyList extends React.PureComponent{
         />
 
     );
-    _onPressItem = ((id:string)=> {
+    _onPressItem = ((item:Object,id:string)=> {
+
             this.setState((state) => {
                 // copy the map rather than modifying state.
                 const selected = new Map(state.selected);
@@ -78,19 +78,18 @@ class MyList extends React.PureComponent{
                 [
                     {text: 'Ask me later', onPress: () => console.log('Ask me later pressed')},
                     {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
-                    {text: 'OK', onPress: () => console.log('OK Pressed')},
+                    {text: 'OK', onPress: () => this.props.navigation.navigate('NewsDetail',{text:item.text})},
                 ],
                 {cancelable: false}
             )
         }
     );
 
-
-
     render () {
+       const data = this.props.navigation.state.params;
         return (
                 <FlatList
-                    data={this.props.data}
+                    data={data}
                     extraData={this.state}
                     keyExtractor={this._keyExtractor}
                     renderItem={this._renderItem}

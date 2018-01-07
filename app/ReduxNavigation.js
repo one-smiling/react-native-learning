@@ -5,7 +5,7 @@ import { Provider, connect } from 'react-redux';
 import React from 'react'
 import HomeScreen from 'app/HomeView'
 import DetailScreen from 'app/DetailView'
-import TestView from 'app/TestView'
+import NewsList from 'app/NewsList'
 
 //底部的tabBar导航
 const TabbarNavigator = TabNavigator({
@@ -20,7 +20,9 @@ const TabbarNavigator = TabNavigator({
 //整个应用的路由栈
 const AppNavigator = StackNavigator({
     Home:{screen:HomeScreen},
-    NewsDetail: {screen: TestView}
+    NewsList:{screen:NewsList},
+    NewsDetail: {screen: DetailScreen}
+
 });
 
 

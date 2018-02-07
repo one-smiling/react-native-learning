@@ -1,4 +1,5 @@
 import {TabNavigator,addNavigationHelpers,StackNavigator,NavigationActions} from 'react-navigation'
+import {createReduxBoundAddListener,createReactNavigationReduxMiddleware,} from 'react-navigation-redux-helpers';
 import {View,Text,Button,} from 'react-native'
 import { createStore, combineReducers } from 'redux';
 import { Provider, connect } from 'react-redux';
@@ -37,12 +38,20 @@ const appReducer = combineReducers({
     nav:navReducer
 });
 
+// Note: createReactNavigationReduxMiddleware must be run before createReduxBoundAddListener
+const middleware = createReactNavigationReduxMiddleware(
+  "root",
+  state => state.nav,
+);
+const addListener = createReduxBoundAddListener("root");
+
 class  App extends React.Component {
     render () {
         return (
             <AppNavigator navigation={addNavigationHelpers({
                 dispatch:this.props.dispatch,
-                state:this.props.nav
+                state:this.props.nav,
+                addListener,
             })}/>
         )
     }

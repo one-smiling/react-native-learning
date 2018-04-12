@@ -4,27 +4,12 @@ import { connect } from 'react-redux';
 import { Button } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 
-// const AuthButton = ({ logout, loginScreen, isLoggedIn }) => (
-//   <Button
-//     title={isLoggedIn ? 'Log Out' : 'Open Login Screen'}
-//     onPress={isLoggedIn ? logout : loginScreen}
-//   />
-// );
-
-class AuthButton extends React.Component {
-
-  render() {
-    const {isLoggedIn,logout,loginScreen} = this.props
-
-    return(
-        <Button
-            title={isLoggedIn ? 'Log Out' : 'Open Login Screen'}
-            onPress={isLoggedIn ? logout : loginScreen}
-        />
-    )
-  }
-}
-
+const AuthButton = ({ logout, loginScreen, isLoggedIn }) => (
+  <Button
+    title={isLoggedIn ? 'Log Out' : 'Open Login Screen'}
+    onPress={isLoggedIn ? logout : loginScreen}
+  />
+);
 
 AuthButton.propTypes = {
   isLoggedIn: PropTypes.bool.isRequired,
